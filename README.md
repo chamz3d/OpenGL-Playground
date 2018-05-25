@@ -1,2 +1,2 @@
 # OpenGL-Playground
-Studies of OpenGL
+Studying OpenGL
