@@ -1,16 +1,16 @@
 #include "Shader.h"
 
-Shader::Shader(std::vector<std::pair<const GLchar*, GLenum>> &shadersPathAndType)
+Shader::Shader(std::vector<ShaderFile> &shaderFiles)
 {
-    m_shadersContent = &shadersPathAndType;
+    m_shaderContent = &shaderFiles;
 }
 
 void Shader::compile()
 {
-    std::for_each(m_shadersContent->begin(), m_shadersContent->end(), [&](const std::pair<const GLchar*, GLenum> shaderPathAndType)
+    std::for_each(m_shaderContent->begin(), m_shaderContent->end(), [&](const ShaderFile shaderFile)
     {
-        const std::string shaderStr = readShaderCode(shaderPathAndType.first);
-        unsigned int shaderId = compileShader(shaderStr.c_str(), shaderPathAndType.second);
+        const std::string shaderStr = readShaderCode(shaderFile.Path());
+        unsigned int shaderId = compileShader(shaderStr.c_str(), shaderFile.Type());
         m_shaders.push_back(shaderId);
     });
     linkShaders(m_shaders);

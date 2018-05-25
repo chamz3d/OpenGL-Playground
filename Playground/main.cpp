@@ -132,14 +132,14 @@ int main()
 
     if (createWindow())
     {
-        std::pair<const GLchar*, GLenum> vShader("4.4.shader.vs", GL_VERTEX_SHADER);
-        std::pair<const GLchar*, GLenum> fShader("4.4.shader.fs", GL_FRAGMENT_SHADER);
-        std::vector<std::pair<const GLchar*, GLenum>> shadersPathandType;
+        ShaderFile vShader("4.4.shader.vs", GL_VERTEX_SHADER);
+        ShaderFile fShader("4.4.shader.fs", GL_FRAGMENT_SHADER);
+        std::vector<ShaderFile> shaderFiles;
 
-        shadersPathandType.push_back(vShader);
-        shadersPathandType.push_back(fShader);
+        shaderFiles.push_back(vShader);
+        shaderFiles.push_back(fShader);
 
-        Shader shader(shadersPathandType);
+        Shader shader(shaderFiles);
         shader.compile();
 
         bindShaderData();

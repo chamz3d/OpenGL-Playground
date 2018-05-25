@@ -9,17 +9,19 @@
 #include <algorithm>
 #include <vector>
 
+#include "ShaderFile.h"
+
 class Shader
 {
 private:
-    std::vector<std::pair<const GLchar*, GLenum>> *m_shadersContent;
+    std::vector<ShaderFile> *m_shaderContent;
     std::vector<unsigned int> m_shaders;
 
 public:
     // the shader program ID
     unsigned int ID;
 
-    Shader(std::vector<std::pair<const GLchar*, GLenum>> &shadersPathAndType);
+    Shader(std::vector<ShaderFile> &shadersPathAndType);
 
     void compile();
     void use();
