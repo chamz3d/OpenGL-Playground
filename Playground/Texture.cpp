@@ -1,9 +1,10 @@
 #include "Texture.h"
 
-Texture::Texture() {}
-Texture::~Texture() {}
+Texture::Texture(const char* path) : m_path(path)
+{
+}
 
-void Texture::generateData(const char *path)
+void Texture::generateData()
 {
     unsigned int texture;
     glGenTextures(1, &texture);
@@ -19,7 +20,7 @@ void Texture::generateData(const char *path)
     // load image, create texture and generate mipmaps
     int width, height, nrChannels;
 
-    unsigned char *data = stbi_load(path, &width, &height, &nrChannels, 0);
+    unsigned char *data = stbi_load(m_path.c_str(), &width, &height, &nrChannels, 0);
 
     if (data)
     {

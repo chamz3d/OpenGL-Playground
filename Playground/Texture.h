@@ -9,11 +9,10 @@
 class Texture
 {
 private:
-    unsigned char *m_data;
+    std::string m_path;
 public:
-    Texture();
-    ~Texture();
-    void generateData(const char *path);
+    Texture(const char* path);
+    void generateData();
 };
 
 #endif // TEXTURE_H

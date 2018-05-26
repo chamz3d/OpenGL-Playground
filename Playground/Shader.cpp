@@ -1,13 +1,12 @@
 #include "Shader.h"
 
-Shader::Shader(std::vector<ShaderFile> &shaderFiles)
+Shader::Shader(std::vector<ShaderFile> shaderFiles) : m_shaderContent(shaderFiles)
 {
-    m_shaderContent = &shaderFiles;
 }
 
 void Shader::compile()
 {
-    std::for_each(m_shaderContent->begin(), m_shaderContent->end(), [&](const ShaderFile shaderFile)
+    std::for_each(m_shaderContent.begin(), m_shaderContent.end(), [&](const ShaderFile shaderFile)
     {
         const std::string shaderStr = readShaderCode(shaderFile.Path());
         unsigned int shaderId = compileShader(shaderStr.c_str(), shaderFile.Type());

@@ -163,8 +163,8 @@ int main()
         Shader shader(shaderFiles);
         shader.compile();
 
-        Texture texture;
-        texture.generateData("container.jpg");
+        Texture texture("container.jpg");
+        texture.generateData();
 
         update(shader);
     }

@@ -14,14 +14,14 @@
 class Shader
 {
 private:
-    std::vector<ShaderFile> *m_shaderContent;
+    std::vector<ShaderFile> m_shaderContent;
     std::vector<unsigned int> m_shaders;
 
 public:
     // the shader program ID
     unsigned int ID;
 
-    Shader(std::vector<ShaderFile> &shadersPathAndType);
+    Shader(std::vector<ShaderFile> shaderFiles);
 
     void compile();
     void use();
